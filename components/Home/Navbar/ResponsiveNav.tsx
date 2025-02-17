@@ -1,12 +1,20 @@
-import React from 'react'
-import Nav from './Nav'
-import MobileNav from './MobileNav'
+'use client';
+import React, { useState } from 'react';
+import Nav from './Nav';
+import MobileNav from './MobileNav';
+
 
 const ResponsiveNav = () => {
-  return (
-    <div><Nav />
-    <MobileNav /></div>
-  )
-}
+  const [showNav, setShowNav] = useState(false);
+  const handleNavShow = () => setShowNav(true);
+  const handleNavClose = () => setShowNav(false);
 
-export default ResponsiveNav
+  return (
+    <div>
+      <Nav openNav={handleNavShow} />
+      <MobileNav showNav={showNav} closeNav={handleNavClose} />
+    </div>
+  );
+};
+
+export default ResponsiveNav;
